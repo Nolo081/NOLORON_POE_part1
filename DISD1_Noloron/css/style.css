@@ -163,6 +163,7 @@ main section {
   margin: 0 0 2rem 0;
 }
 
+
 .top-boxa.cta-btn {
   display: inline-flex;
   align-items: center;
@@ -175,6 +176,7 @@ main section {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
+
 }
 
 .top-box a.cta-btn:hover {
@@ -492,7 +494,7 @@ footer p {
   
 }
 /* 
-softawer showcassing
+past projects
  
 */
 
