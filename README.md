@@ -6,11 +6,11 @@ NOLORON is a modern, high-end website designed for a multi versed technology ent
 
 project plans:
 
-The ultimate goal for NOLORON is to evolve  into a fully functional quality website. While earlier phases (part 1-2) focused on semantic multi-page HTML architecture and responsive CSS styling without JavaScript, Part 3 integrates interactive web features, dark mode toggling, dynamic portfolio filtering, live time utilities, and direct backend service request handlers via AJAX.
+The ultimate goal for NOLORON is to evolve  into a fully functional quality website. While earlier phases (part 1-2) focused on semantic multi-page HTML architecture and responsive CSS styling without JavaScript, Part 3 integrates interactive web features, dark mode toggling, dynamic portfolio filtering, dynamic project image galleries with interactive lightbox popups, location map embeds, live time utilities, and direct backend service request handlers via AJAX.
 
 Content Refinement
 Company Profile Research: Conducted extended research to expand content copy across all pages (index.html, about.html, services.html, contact.html), detailing company history, service capabilities, and long-term vision.
-Branding & Assets: Acquired and added updated high-resolution media assets, including the newly refreshed corporate logo (images/verygoodsolutions-logo.jpg) and system interface screenshots.
+Branding & Assets: Acquired and added updated high-resolution media assets, including the newly refreshed corporate logo (images/noloron-logo.png) and system interface screenshots with standardized lowercase-hyphenated filenames for optimal SEO indexing.
 Resource Linking: Added live external project links and GitHub source code repositories into the portfolio.html architecture to provide verifiable proof of software development work.
 
 (CSS/style.css)
@@ -68,7 +68,11 @@ Implemented localStorage state persistence to preserve user theme selection acro
 
 Designed separate background grid rules ([data-theme="dark"] body) ensuring crisp grid line visibility in dark mode while leaving standard light mode styles completely untouched.
 
-Interactive JavaScript Features & Dynamic Clock
+Interactive JavaScript Features, Lightbox & Dynamic Clock
+
+Project Gallery & Lightbox Overlay: Added a dedicated screenshot gallery on portfolio.html featuring image click-to-expand modal previews (#lightbox), keyboard navigation (Arrow keys and Escape key support), smooth fade-in animations, zoom cursors, and background scroll locking.
+
+Interactive Leaflet Map: Integrated a responsive, open-source Leaflet JS location map on contact.html featuring CartoDB Positron tiles, interactive zooming, and custom office location pin popups for Gauteng, South Africa.
 
 Portfolio Filtering: added interactive category filter buttons to sort project cards dynamically without reloading pages.
 
@@ -78,5 +82,6 @@ Search Engine Optimization (SEO) & Academic Compliance
 
 Applied <title> tags across all site pages (index.html, about.html, services.html, portfolio.html, contact.html).
 
-Comprehensive <meta name="description"> and <meta name="keywords"> optimization across all HTML heads.
+Comprehensive <meta name="description"> and <meta name="keywords"> optimization across all HTML heads alongside loading="lazy" attributes and clean image alt descriptions.
 
+Verified proper semantic HTML structure and external JavaScript module linking (js/script.js).

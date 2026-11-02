@@ -8,7 +8,7 @@
     <title>NOLORON | Contact Us &amp; Enquiries</title>
     <meta name="description" content="Get in touch with NOLORON for software engineering enquiries, technical partnerships, IT support, or general business questions.">
     <meta name="keywords" content="contact NOLORON, IT support enquiry, software development consultation, South Africa">
-    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
@@ -78,6 +78,8 @@
         </div>
 
         
+
+        
         <div class="form-panel">
             <h2>SEND A MESSAGE</h2>
 
@@ -119,13 +121,25 @@
             </form>
         </div>
     </div>
+
+    <!--Map Section -->
+    <section class="map-section">
+        <span class="section-tag">// OUR LOCATION</span>
+        <h2>Find Us in South Africa</h2>
+        <p class="about-lead" style="margin-bottom: 1.5rem;">Visit our hub or get in touch for software development consultations.</p>
+        <div id="contactMap" class="interactive-map-container" aria-label="NOLORON office location map"></div>
+    </section>
 </main>
 
 <footer>
     <p>ST10521269#NOLORON</p>
 </footer>
+<!-- Map -->
+ <!-- Ai was applied for this line of code(mainly used to aquire the correct leaflet) -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="js/script.js"></script>    <!-- linking my js -->
 <div id="liveClock"></div>    <!-- will get activate by my js file -->
 </div>
+
 </body>
 </html>

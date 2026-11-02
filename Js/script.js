@@ -141,5 +141,114 @@ document.addEventListener("DOMContentLoaded", function () {
             
         });
     });
+
+    // Lightbox & Image Gallery Navigation Logic
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxClose = document.getElementById("lightbox-close");
+    const lightboxPrev = document.getElementById("lightbox-prev");
+    const lightboxNext = document.getElementById("lightbox-next");
+    
+    // Collect all zoomable images (.gallery-img and .project-media-large)
+    const zoomableImages = document.querySelectorAll(".gallery-img, .project-media-large");
+    let currentIndex = 0;
+    let lastFocusedElement = null;
+
+    function openLightbox(index) {
+        if (!lightbox || zoomableImages.length === 0) return;
+        currentIndex = index;
+        lastFocusedElement = document.activeElement;
+        
+        const targetImg = zoomableImages[currentIndex];
+        lightboxImg.src = targetImg.src;
+        lightboxImg.alt = targetImg.alt || "Enlarged view";
+        
+        lightbox.removeAttribute("hidden");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden"; // Disable background scrolling
+        
+        lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.setAttribute("hidden", "true");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImg.src = "";
+        document.body.style.overflow = ""; // Restore background scrolling
+        
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+        }
+    }
+
+    function showNextImage() {
+        currentIndex = (currentIndex + 1) % zoomableImages.length;
+        openLightbox(currentIndex);
+    }
+
+    function showPrevImage() {
+        currentIndex = (currentIndex - 1 + zoomableImages.length) % zoomableImages.length;
+        openLightbox(currentIndex);
+    }
+
+    if (lightbox && zoomableImages.length > 0) {
+        zoomableImages.forEach((img, index) => {
+            img.addEventListener("click", () => openLightbox(index));
+            img.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openLightbox(index);
+                }
+            });
+        });
+
+        if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+        if (lightboxNext) lightboxNext.addEventListener("click", showNextImage);
+        if (lightboxPrev) lightboxPrev.addEventListener("click", showPrevImage);
+
+        // Click outside image to close it 
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // navigat
+        document.addEventListener("keydown", (e) => {
+            if (lightbox.getAttribute("hidden") === null) {
+                if (e.key === "Escape") {
+                    closeLightbox();
+                } else if (e.key === "ArrowRight") {
+                    showNextImage();
+                } else if (e.key === "ArrowLeft") {
+                    showPrevImage();
+                }
+            }
+        });
+    }
+
+    // map code
+    //incoporated ais knowledge to find which map provider would be best suited as well as most compatable to my websites aestetic
+    const mapElement = document.getElementById("contactMap");
+    if (mapElement && typeof L !== "undefined") {
+        // Coordinates 
+        const officeCoords = [-26.2041, 28.0473];
+        
+        const contactMap = L.map('contactMap', {
+            scrollWheelZoom: false
+        }).setView(officeCoords, 13);
+
+        // 
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(contactMap);
+
+        // 
+        L.marker(officeCoords).addTo(contactMap)
+            .bindPopup("<b>NOLORON Technologies</b><br>Gauteng, South Africa<br>Built to Solve.")
+            .openPopup();
+    }
     
 });
